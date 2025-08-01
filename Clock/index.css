@@ -1,0 +1,44 @@
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #f0f0f0;
+}
+
+#clock{
+    display: flex;
+    background-color: hsl(0, 0%, 100%);
+    text-align: center;
+    max-width: 50%;
+    margin: auto;
+    padding: 3rem;
+    border: solid 1px black;
+    border-radius: 1.5rem;
+    box-shadow: 12px 2px 75px hsla(0, 0%, 1%, 0.786);
+}
+
+#hour, #minute, #second{
+    font-size: 6.5em;
+    margin: auto;
+}
+
+#dates{
+    background-color: hsl(0, 0%, 100%);
+    text-align: center;
+    margin: auto;
+    padding: 3rem;
+    border: solid 1px black;
+    border-radius: 1.5rem;
+    line-height: 20px;
+}
+
+#day, #year{
+    font-size: 3em;
+    margin: auto;
+}
+
+#dateAndMonth{
+    display: flex;
+    margin: auto;
+    font-size: 1em;
+    padding: 3rem;
+    
+}
