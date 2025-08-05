@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body{
+    background-color: #f5f5f1;
+}
+
+#loginContainer{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.loginBox{
+    width: 50%;
+    padding: 40px;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+    text-align: center;
+    line-height: 50px;
+    background: #799EFF;
+}
+
+
+#loginBtn{
+    padding: 10px 20px;
+    max-width: 100%;
+    background-color: #FFDE63;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    align-content: center;
+    text-align: center;
+    font-size: 25px;
+}
+
+#loginBtn:hover{
+    background-color: #FFBC4C;
+    color: #000000;
+}
+
+/* For username and password icons*/
+.loginBox i{
+    font-size: 25px;
+    margin: 10px;
+}
+
+#usernameTxt, #passwordTxt{
+    padding: 15px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    font-size: 20px;
+}
+
+#toastBox{
+    position: absolute;
+    top: 15px;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+}
+
+.toast{
+    width: 500px;
+    height: 90px;
+    background-color: #fff;
+    font-weight: 500;
+    margin: 15px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 0 35px 0 25px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: move 0.5s 1 linear forwards;
+}
+
+
+@keyframes move{
+    0%{
+        transform: translateX(100%);
+    }
+    40%{
+        transform: translateX(-10%);
+    }
+    80%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(-10px);
+    }   
+}
+
+.toast::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+    background-color: green;
+    animation: bar 4s linear forwards;
+}
+
+@keyframes bar{
+    0%{
+        width: 100%;
+    }
+    100%{
+        width: 0%;
+    }
+}
+
+.toast.error::after{
+    background-color: red;
+}   
+
+.toast.valid::after{
+    background-color: orange;
+}
