@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Courier New', Courier, monospace
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-image: url(images/background.jpg);
+    background-position: center;
+    background-size: cover;
+    padding: 0 8%;
+}
+
+.logo{
+    width: 120px;
+    padding: 20px 0;
+    cursor: pointer;
+}
+
+.content{
+    top: 50%;
+    position: absolute;
+    transform: translateY(-50%);
+    color: #000;
+}
+
+.content h1{
+    font-size: 84px;
+    font-weight: 600;
+}
+
+.content h1 span{
+    color: #ff3753;
+}
+
+.move-time{
+    display: flex;
+    
+}
+.move-time div{
+    flex-basis: 100px;
+}
+
+.move-time div p{
+    font-size: 60px;
+    margin-bottom: -14px;
+}
+
+.truck{
+    width: 350px;
+    position: absolute;
+    left: 5px;
+    bottom: -180px;
+    animation: truck 5s linear infinite;
+}
+
+@keyframes truck{
+    0%{
+        left: 0;
+    }
+    100%{
+        left: 150%;
+    }
+}
