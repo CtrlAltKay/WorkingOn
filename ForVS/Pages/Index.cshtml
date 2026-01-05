@@ -1,0 +1,177 @@
+﻿@page
+@model ContactBookWeb.Pages.IndexModel
+@{
+    ViewData["Title"] = "Contact Book";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Book</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+            button:hover {
+                background-color: #45a049;
+            }
+
+        .delete-btn {
+            background-color: #f44336;
+            padding: 5px 15px;
+        }
+
+            .delete-btn:hover {
+                background-color: #da190b;
+            }
+
+        .search-section {
+            margin-bottom: 20px;
+        }
+
+        .contacts-list {
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            background: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            margin: 0 0 5px 0;
+            color: #333;
+        }
+
+        .contact-info p {
+            margin: 3px 0;
+            color: #666;
+        }
+
+        .no-contacts {
+            text-align: center;
+            color: #999;
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📇 Contact Book</h1>
+
+        <div class="form-section">
+            <h2>Add New Contact</h2>
+            <form method="post">
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <label for="contactName">Name:</label>
+                    <input type="text" id="contactName" name="NewContact.Name" required />
+                </div>
+                <div class="form-group">
+                    <label for="contactPhone">Phone Number:</label>
+                    <input type="text" id="contactPhone" name="NewContact.PhoneNumber" />
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Email:</label>
+                    <input type="email" id="contactEmail" name="NewContact.Email" />
+                </div>
+                <button type="submit">Add Contact</button>
+            </form>
+        </div>
+
+        <div class="search-section">
+            <h2>Search Contacts</h2>
+            <form method="get">
+                <div class="form-group">
+                    <input type="text" name="SearchTerm" value="@Model.SearchTerm" placeholder="Search by name..." />
+                    <button type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="contacts-list">
+            <h2>All Contacts (@Model.Contacts.Count)</h2>
+            @if (Model.Contacts.Count == 0)
+            {
+                <div class="no-contacts">
+                    <p>No contacts found. Add your first contact above!</p>
+                </div>
+            }
+            else
+            {
+                @foreach (var contact in Model.Contacts)
+                {
+                    <div class="contact-item">
+                        <div class="contact-info">
+                            <h3>@(contact.Name ?? "No Name")</h3>
+                            <p>📞 @(contact.PhoneNumber ?? "No phone")</p>
+                            <p>✉️ @(contact.Email ?? "No email")</p>
+                        </div>
+                        <form method="post" asp-page-handler="Delete">
+                            <input type="hidden" name="id" value="@contact.Id" />
+                            <button type="submit" class="delete-btn">Delete</button>
+                        </form>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</body>
+</html>
